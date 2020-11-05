@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 Widget customTextField(String campo, {bool isPassword, String validator}) {
   return TextFormField(

@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:projeto4/pages/login/signupPage.dart';
 import 'package:projeto4/widgets/customTextFormField.dart';
 
 class LoginPage extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
-    var height = Get.height;
-    var width = Get.width;
+    var height = MediaQuery.of(context).size.height;
+    var width = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
         title: Text("Login"),
@@ -45,13 +43,9 @@ class LoginPage extends StatelessWidget {
                 ),
                 onPressed: () {
                   if (_formKey.currentState.validate()) {
-                    Get.toNamed("/home");
-                    Get.snackbar("Sucesso", "Logado com sucesso!!!",
-                        backgroundColor: Colors.lightBlue);
+                    Navigator.pushNamed(context, "/home");
                   } else
-                    Get.snackbar("Erro", "Falha no login",
-                        colorText: Colors.black,
-                        backgroundColor: Colors.red[200]);
+                    Text("erro");
                 },
               ),
               SizedBox(
@@ -68,7 +62,7 @@ class LoginPage extends StatelessWidget {
                             color: Colors.green, fontWeight: FontWeight.bold),
                       ),
                       onTap: () {
-                        Get.toNamed("/signup");
+                        Navigator.pushNamed(context, "/signup");
                       }),
                 ],
               ),

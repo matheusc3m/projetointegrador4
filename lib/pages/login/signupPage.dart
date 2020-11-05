@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:projeto4/widgets/customTextFormField.dart';
 
 class SignupPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var height = Get.height;
-    var width = Get.width;
+    var height = MediaQuery.of(context).size.height;
+    var width = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
         title: Text("Cadastro"),
@@ -44,8 +43,7 @@ class SignupPage extends StatelessWidget {
                 style: TextStyle(color: Colors.white),
               ),
               onPressed: () {
-                Get.snackbar("Cadastro", "Seu cadastro foi enviado!!!",
-                    backgroundColor: Colors.white);
+                print("Snackbar sucesso");
               },
             ),
             SizedBox(

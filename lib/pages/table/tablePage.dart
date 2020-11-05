@@ -22,17 +22,17 @@ class TablePage extends StatelessWidget {
           rows: [
             DataRow(cells: [
               DataCell(Text('1')),
-              DataCell(Text('Arya')),
+              DataCell(Text('10:00')),
               DataCell(Text('6')),
             ]),
             DataRow(cells: [
-              DataCell(Text('12')),
-              DataCell(Text('John')),
+              DataCell(Text('2')),
+              DataCell(Text('12:00')),
               DataCell(Text('9')),
             ]),
             DataRow(cells: [
-              DataCell(Text('42')),
-              DataCell(Text('Tony')),
+              DataCell(Text('3')),
+              DataCell(Text('13:00')),
               DataCell(Text('8')),
             ]),
           ],
