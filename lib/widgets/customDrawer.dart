@@ -18,10 +18,10 @@ Widget customDrawer(BuildContext context) {
                   Icons.supervised_user_circle,
                   size: 100,
                 ))),
-        CustomListTile(
+        customListTile(
             "Editar Minhas Informações", Icons.business, "editar", context),
-        CustomListTile("Sobre", Icons.info, "sobre", context),
-        CustomListTile("Logout", Icons.lock, "logout", context, screen: "/")
+        customListTile("Sobre", Icons.info, "sobre", context),
+        customListTile("Logout", Icons.lock, "logout", context, screen: "/")
       ],
     ),
   );

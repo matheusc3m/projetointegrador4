@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 Widget customTextField(String campo, {bool isPassword, String validator}) {
   return TextFormField(
+    // ignore: missing_return
     validator: (value) {
       switch (validator) {
         case "usuario":

@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:projeto4/pages/home/lancamento/lancamentoMenuController.dart';
 
 import 'package:projeto4/widgets/customCard.dart';
 
+// ignore: must_be_immutable
 class LancamentoMenuPage extends StatelessWidget {
+  final controller = LancamentosMenuController();
   var menu = ["Álcool Hidratado", "Destilação"];
   var images = ["assets/alcool.png", "assets/destilacao.png"];
   @override
@@ -21,8 +24,8 @@ class LancamentoMenuPage extends StatelessWidget {
                   (MediaQuery.of(context).size.height / 2),
             )),
             itemBuilder: (BuildContext context, int index) {
-              return customCard(
-                  images, menu, context, index, "principal", () {});
+              return CustomCard(images, menu, context, index,
+                  controller.funcNavigation(index));
             }),
       ),
     );

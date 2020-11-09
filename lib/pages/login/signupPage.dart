@@ -5,6 +5,7 @@ class SignupPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
+    // ignore: unused_local_variable
     var width = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(

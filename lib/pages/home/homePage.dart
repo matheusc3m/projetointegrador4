@@ -8,18 +8,19 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var services = ["Lançar informações", "Dashboard", "Opção 3", "Opção 4"];
+    var services = ["Lançar informações", "Dashboard"];
     var images = [
       "assets/lancamento.png",
-      "assets/dashboard.png",
-      "assets/dashboard.png",
       "assets/dashboard.png",
     ];
     return Scaffold(
       backgroundColor: Color(0xFFF0F0F0),
       appBar: AppBar(
         elevation: 0,
-        title: Text("Bem vindo João"),
+        title: Text(
+          "Bem vindo João",
+          style: TextStyle(fontFamily: "FredokaOne"),
+        ),
       ),
       drawer: customDrawer(context),
       body: Padding(
@@ -32,18 +33,20 @@ class HomePage extends StatelessWidget {
                   (MediaQuery.of(context).size.height / 2),
             )),
             itemBuilder: (BuildContext context, int index) {
-              return customCard(images, services, context, index, "principal",
-                  () {
-                if (index == 0)
-                  Navigator.of(context).pushNamed("/home/lancamentos");
-              });
+              return CustomCard(
+                images,
+                services,
+                context,
+                index,
+                controller.funcNavigation(index),
+              );
             }),
       ),
     );
   }
 }
 
-CustomListTile(String texto, IconData icon, String pagina, BuildContext context,
+customListTile(String texto, IconData icon, String pagina, BuildContext context,
     {String screen}) {
   return Padding(
     padding: const EdgeInsets.fromLTRB(8.0, 0, 8.0, 0),

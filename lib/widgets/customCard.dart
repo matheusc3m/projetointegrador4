@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:projeto4/pages/lancamento/lancamentoMenuPage.dart';
-import 'package:projeto4/pages/table/tablePage.dart';
 
-Widget customCard(List<String> images, List<String> texts, BuildContext context,
-    int index, String tipo, Function() func) {
+// ignore: non_constant_identifier_names
+CustomCard(List<String> images, List<String> texts, BuildContext context,
+    int index, String func) {
   return Card(
     semanticContainer: true,
     child: InkWell(
-      onTap: func,
+      onTap: () {
+        Navigator.of(context).pushNamed(func);
+      },
       child: Stack(
         children: <Widget>[
           Positioned(

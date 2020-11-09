@@ -1,8 +1,9 @@
-import 'package:flutter/material.dart';
-
 class HomeController {
-  Function funcPrincipal(int index, BuildContext context) {
-    if (index == 0) Navigator.of(context).pushNamed("/home/lancamentos");
-    if (index == null) print("vsf");
+  String funcNavigation(int index) {
+    if (index == 0) {
+      return "/home/lancamentos";
+    } else if (index == 1) {
+      return "/home/dashboard";
+    }
   }
 }

@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:projeto4/pages/home/dashboard/dashboardPage.dart';
 import 'package:projeto4/pages/home/homePage.dart';
-import 'package:projeto4/pages/lancamento/lancamentoMenuPage.dart';
+
 import 'package:projeto4/pages/login/loginPage.dart';
 import 'package:projeto4/pages/login/signupPage.dart';
+
+import 'pages/home/lancamento/alcoolHidratado/alcooHidratadoPage.dart';
+import 'pages/home/lancamento/lancamentoMenuPage.dart';
 
 void main() => runApp(MyApp());
 
@@ -22,6 +26,8 @@ class MyApp extends StatelessWidget {
         '/signup': (context) => SignupPage(),
         '/home': (context) => HomePage(),
         '/home/lancamentos': (context) => LancamentoMenuPage(),
+        '/home/lancamentos/alcoolHidratado': (context) => AlcoolHidratadoPage(),
+        '/home/dashboard': (context) => DashboardPage(),
       },
     );
   }
