@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:projeto4/pages/home/dashboard/dashboardPage.dart';
 import 'package:projeto4/pages/home/homePage.dart';
+import 'package:projeto4/pages/home/lancamento/alcoolHidratado/listagemAlcoolPage.dart';
+import 'package:projeto4/pages/home/lancamento/destilacao/destilacaoPage.dart';
 
 import 'package:projeto4/pages/login/loginPage.dart';
 import 'package:projeto4/pages/login/signupPage.dart';
@@ -27,7 +29,9 @@ class MyApp extends StatelessWidget {
         '/home': (context) => HomePage(),
         '/home/lancamentos': (context) => LancamentoMenuPage(),
         '/home/lancamentos/alcoolHidratado': (context) => AlcoolHidratadoPage(),
+        '/home/lancamentos/destilacao': (context) => DestilacaoPage(),
         '/home/dashboard': (context) => DashboardPage(),
+        '/home/lancamentos/listagem': (context) => ListagemAlcoolPage(),
       },
     );
   }

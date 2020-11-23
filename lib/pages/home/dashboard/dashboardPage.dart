@@ -1,6 +1,5 @@
-import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
-import 'package:projeto4/pages/home/dashboard/indicator.dart';
+import 'package:syncfusion_flutter_charts/charts.dart';
 
 class DashboardPage extends StatefulWidget {
   @override
@@ -8,151 +7,43 @@ class DashboardPage extends StatefulWidget {
 }
 
 class _DashboardPageState extends State<DashboardPage> {
-  int touchedIndex;
-
   @override
   Widget build(BuildContext context) {
+    var lista = ["joao"];
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Dashboard"),
-      ),
-      body: AspectRatio(
-        aspectRatio: 1.3,
-        child: Card(
-          color: Colors.white,
-          child: Row(
-            children: <Widget>[
-              const SizedBox(
-                height: 18,
-              ),
-              Expanded(
-                child: AspectRatio(
-                  aspectRatio: 1,
-                  child: PieChart(
-                    PieChartData(
-                        pieTouchData:
-                            PieTouchData(touchCallback: (pieTouchResponse) {
-                          setState(() {
-                            if (pieTouchResponse.touchInput is FlLongPressEnd ||
-                                pieTouchResponse.touchInput is FlPanEnd) {
-                              touchedIndex = -1;
-                            } else {
-                              touchedIndex =
-                                  pieTouchResponse.touchedSectionIndex;
-                            }
-                          });
-                        }),
-                        borderData: FlBorderData(
-                          show: false,
-                        ),
-                        sectionsSpace: 0,
-                        centerSpaceRadius: 40,
-                        sections: showingSections()),
-                  ),
-                ),
-              ),
-              Column(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.end,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: const <Widget>[
-                  Indicator(
-                    color: Color(0xff0293ee),
-                    text: 'Primeiro',
-                    isSquare: true,
-                  ),
-                  SizedBox(
-                    height: 4,
-                  ),
-                  Indicator(
-                    color: Color(0xfff8b250),
-                    text: 'Segundo',
-                    isSquare: true,
-                  ),
-                  SizedBox(
-                    height: 4,
-                  ),
-                  Indicator(
-                    color: Color(0xff845bef),
-                    text: 'Terceiro',
-                    isSquare: true,
-                  ),
-                  SizedBox(
-                    height: 4,
-                  ),
-                  Indicator(
-                    color: Color(0xff13d38e),
-                    text: 'Quarto',
-                    isSquare: true,
-                  ),
-                  SizedBox(
-                    height: 18,
-                  ),
-                ],
-              ),
-              const SizedBox(
-                width: 28,
-              ),
-            ],
-          ),
+        appBar: AppBar(
+          title: const Text('Dashboard'),
         ),
-      ),
-    );
+        body: SfCartesianChart(
+            primaryXAxis: CategoryAxis(),
+            // Chart title
+            title: ChartTitle(text: 'Perda de Álcool ao longo do ano em %'),
+            // Enable legend
+            legend: Legend(isVisible: true),
+            // Enable tooltip
+            tooltipBehavior: TooltipBehavior(enable: true),
+            series: <ChartSeries<_SalesData, String>>[
+              LineSeries<_SalesData, String>(
+                  dataSource: <_SalesData>[
+                    _SalesData('Jan', 23),
+                    _SalesData('Fev', 28),
+                    _SalesData('Mar', 34),
+                    _SalesData('Abr', 32),
+                    _SalesData('Mai', 22),
+                    _SalesData('Jun', 17),
+                    _SalesData('Jul', 30),
+                  ],
+                  xValueMapper: (_SalesData sales, _) => sales.year,
+                  yValueMapper: (_SalesData sales, _) => sales.sales,
+                  // Enable data label
+                  dataLabelSettings: DataLabelSettings(isVisible: true))
+            ]));
   }
+}
 
-  List<PieChartSectionData> showingSections() {
-    return List.generate(4, (i) {
-      final isTouched = i == touchedIndex;
-      final double fontSize = isTouched ? 25 : 16;
-      final double radius = isTouched ? 60 : 50;
-      switch (i) {
-        case 0:
-          return PieChartSectionData(
-            color: const Color(0xff0293ee),
-            value: 40,
-            title: '40%',
-            radius: radius,
-            titleStyle: TextStyle(
-                fontSize: fontSize,
-                fontWeight: FontWeight.bold,
-                color: const Color(0xffffffff)),
-          );
-        case 1:
-          return PieChartSectionData(
-            color: const Color(0xfff8b250),
-            value: 30,
-            title: '30%',
-            radius: radius,
-            titleStyle: TextStyle(
-                fontSize: fontSize,
-                fontWeight: FontWeight.bold,
-                color: const Color(0xffffffff)),
-          );
-        case 2:
-          return PieChartSectionData(
-            color: const Color(0xff845bef),
-            value: 15,
-            title: '15%',
-            radius: radius,
-            titleStyle: TextStyle(
-                fontSize: fontSize,
-                fontWeight: FontWeight.bold,
-                color: const Color(0xffffffff)),
-          );
-        case 3:
-          return PieChartSectionData(
-            color: const Color(0xff13d38e),
-            value: 15,
-            title: '15%',
-            radius: radius,
-            titleStyle: TextStyle(
-                fontSize: fontSize,
-                fontWeight: FontWeight.bold,
-                color: const Color(0xffffffff)),
-          );
-        default:
-          return null;
-      }
-    });
-  }
+class _SalesData {
+  _SalesData(this.year, this.sales);
+
+  final String year;
+  final double sales;
 }

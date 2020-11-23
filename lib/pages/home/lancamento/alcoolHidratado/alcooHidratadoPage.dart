@@ -11,10 +11,10 @@ class AlcoolHidratadoPage extends StatelessWidget {
       ),
       appBar: AppBar(
         elevation: 0,
-        title: Text("Lançamento Álcool"),
+        title: Text("Lançamento Alcool"),
       ),
       body: ListView(
-        padding: EdgeInsets.all(10),
+        padding: EdgeInsets.all(20),
         children: [
           _dateTime(),
           _customTextFormField(label: "Massa Específica"),
@@ -47,14 +47,6 @@ class AlcoolHidratadoPage extends StatelessWidget {
       icon: Icon(Icons.event),
       dateLabelText: 'Data',
       timeLabelText: "Hora",
-      selectableDayPredicate: (date) {
-        // Disable weekend days to select from the calendar
-        if (date.weekday == 6 || date.weekday == 7) {
-          return false;
-        }
-
-        return true;
-      },
       onChanged: (val) => print(val),
       validator: (val) {
         print(val);
