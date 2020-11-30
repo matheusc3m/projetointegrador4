@@ -1,12 +1,11 @@
 class DestilacaoModel {
   String date;
   String sId;
-  int porcentdePerca;
+  int perda;
   int iV;
   List<ListaDestilacao> lista;
 
-  DestilacaoModel(
-      {this.date, this.iV, this.porcentdePerca, this.sId, this.lista});
+  DestilacaoModel({this.date, this.iV, this.perda, this.sId, this.lista});
 
   DestilacaoModel.fromJson(Map<String, dynamic> json) {
     if (json['lista'] != null) {
@@ -29,23 +28,23 @@ class DestilacaoModel {
 class ListaDestilacao {
   String date;
   String sId;
-  int porcentdePerca;
+  int perda;
   int iV;
 
-  ListaDestilacao({this.date, this.sId, this.porcentdePerca, this.iV});
+  ListaDestilacao({this.date, this.sId, this.perda, this.iV});
 
   ListaDestilacao.fromJson(Map<String, dynamic> json) {
-    date = json['date'];
+    date = json['data'];
     sId = json['_id'];
-    porcentdePerca = json['porcentdePerca'];
+    perda = json['perda'];
     iV = json['__v'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['date'] = this.date;
+    data['data'] = this.date;
     data['_id'] = this.sId;
-    data['porcentdePerca'] = this.porcentdePerca;
+    data['perda'] = this.perda;
     data['__v'] = this.iV;
     return data;
   }

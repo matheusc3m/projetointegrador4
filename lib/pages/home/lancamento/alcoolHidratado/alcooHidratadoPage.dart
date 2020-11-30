@@ -11,7 +11,7 @@ class AlcoolHidratadoPage extends StatelessWidget {
       ),
       appBar: AppBar(
         elevation: 0,
-        title: Text("Lançamento Alcool"),
+        title: Text("Lançamento Álcool"),
       ),
       body: ListView(
         padding: EdgeInsets.all(20),

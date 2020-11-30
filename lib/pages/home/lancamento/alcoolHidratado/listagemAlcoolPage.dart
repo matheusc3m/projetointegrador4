@@ -139,19 +139,21 @@ class _ListagemAlcoolPageState extends State<ListagemAlcoolPage> {
                       ],
                     ),
                     leading: Icon(Icons.supervised_user_circle),
-                    title: Text(lista["date"].toString()),
+                    title: Text(lista["data"].toString()),
                     children: [
                       isSwitched == true
                           ? Column(
                               children: [
                                 ListTile(
-                                  title: Text("Porcentagem de perca"),
-                                  trailing: Text(
-                                      lista["porcentdePerca"].toString() + "%"),
+                                  title: Text("Porcentagem de perda"),
+                                  trailing:
+                                      Text(lista["perda"].toString() + "%"),
                                 ),
                               ],
                             )
-                          : Column(children: [ListTile(title: Text("Eae men"))])
+                          : Column(children: [
+                              ListTile(title: Text(lista["Ph"].toString()))
+                            ])
                     ],
                   ),
                 )),
